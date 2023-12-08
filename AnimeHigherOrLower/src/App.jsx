@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Game from "./Game";
-
 function App() {
-  const [anime, setAnime] = useState();
-
+  const [anime, setAnime] = useState({});
   function onComplete() {
     const animeObj = JSON.parse(this.responseText);
     setAnime(animeObj);
   }
-  function getRandomAnime() {
-    console.log("A");
-    let firstRandom = Math.floor(Math.random() * 80);
-    let secondRandom = Math.floor(Math.random() * 80);
-    if (anime) {
-      let firstAnime = anime.data[firstRandom];
-      let secondAnime = anime.data[secondRandom];
-      return [firstAnime, secondAnime];
-    }
-  }
-  React.useEffect(() => {
+
+  useEffect(() => {
     const url =
-      "https://cors-anywhere.herokuapp.com/api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=80";
+      "https://cors-anywhere.herokuapp.com/api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=100";
     const request = new XMLHttpRequest();
     request.addEventListener("load", onComplete);
     request.open("GET", url);
@@ -33,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <Game getRandomAnime={getRandomAnime()} />
+      <Game passedCall={anime} />
     </div>
   );
 }
