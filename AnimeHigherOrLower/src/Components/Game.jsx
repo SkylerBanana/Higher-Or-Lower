@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 function Game(props) {
   const [animeData, setAnimeData] = useState();
-
-  const [score, setScore] = useState(0);
-
+  const [score, setScore] = useState(-1);
   const [lost, setLost] = useState(true);
 
   function getRandomAnime() {
@@ -15,14 +13,9 @@ function Game(props) {
     if (props.passedCall) {
       let firstAnime = props.passedCall.data[firstRandom];
       let secondAnime = props.passedCall.data[secondRandom];
-      console.log(firstAnime);
       setAnimeData([firstAnime, secondAnime]);
     }
-    console.log(props.passedCall.data[firstRandom].ranking.rank);
-    console.log(props.passedCall.data[secondRandom].ranking.rank);
-    console.log(lost);
     setLost(true);
-    console.log(score);
   }
 
   function youLost() {
@@ -35,7 +28,7 @@ function Game(props) {
 
   function reset() {
     getRandomAnime();
-    setScore(score - score);
+    setScore(0);
   }
 
   function correct() {
@@ -43,37 +36,52 @@ function Game(props) {
     getRandomAnime();
   }
 
-  if (lost) {
+  if (score < 0) {
+    return (
+      <div className="buttonContainer">
+        <button className="play" onClick={reset}>
+          play
+        </button>
+      </div>
+    );
+  } else if (lost) {
     return (
       <div>
-        <button onClick={getRandomAnime}>play</button>
         {animeData && (
-          <div>
-            <img
-              src={animeData[0].node.main_picture.large}
-              onClick={() => {
-                animeData[0].ranking.rank < animeData[1].ranking.rank
-                  ? correct()
-                  : youLost();
-              }}
-            />
-            <img
-              src={animeData[1].node.main_picture.large}
-              onClick={() => {
-                animeData[1].ranking.rank < animeData[0].ranking.rank
-                  ? correct()
-                  : youLost();
-              }}
-            />
+          <div className="animeContainer">
+            <div className="firstAnime">
+              <h2>{animeData[0].node.title}</h2>
+              <img
+                src={animeData[0].node.main_picture.large}
+                onClick={() => {
+                  animeData[0].ranking.rank < animeData[1].ranking.rank
+                    ? correct()
+                    : youLost();
+                }}
+              />
+            </div>
+            <div className="secondAnime">
+              <h2>{animeData[1].node.title}</h2>
+              <img
+                src={animeData[1].node.main_picture.large}
+                onClick={() => {
+                  animeData[1].ranking.rank < animeData[0].ranking.rank
+                    ? correct()
+                    : youLost();
+                }}
+              />
+            </div>
           </div>
         )}
       </div>
     );
   } else {
     return (
-      <div>
-        <button onClick={reset}>Play Again?</button>
-        <h1>Final Score{score}</h1>
+      <div className="buttonContainer">
+        <button className="play" onClick={reset}>
+          Play Again?
+        </button>
+        <h1 className="finalScore">Final Score{score}</h1>
       </div>
     );
   }
