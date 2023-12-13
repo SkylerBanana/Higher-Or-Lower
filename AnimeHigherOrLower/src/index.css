@@ -1,18 +1,38 @@
-.animeContainer {
-  width: 50%;
-  height: 50%;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: rgb(14, 19, 31);
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.logo {
   margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.animeContainer {
   display: flex;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;
+}
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .firstAnime,
 .secondAnime {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-.play {
-}
 .buttonContainer {
   margin: 0;
   position: absolute;
@@ -20,4 +40,43 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.animeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.finalScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1201px) {
+  .animeImage {
+    width: 400px;
+    height: 600px;
+  }
+  .text-div {
+    width: 400px;
+  }
+  .animeContainer {
+    gap: 15px;
+    padding: 20px;
+  }
 }
