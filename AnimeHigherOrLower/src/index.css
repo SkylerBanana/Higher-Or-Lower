@@ -9,17 +9,11 @@ html {
 }
 .logo {
   margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+
+  margin-top: 2px;
+  margin-bottom: 8px;
 }
-.animeContainer {
-  display: flex;
-  padding: 0px;
-  justify-content: center;
-  align-items: center;
-}
+
 .truncate {
   overflow: hidden;
   white-space: nowrap;
@@ -42,22 +36,18 @@ html {
   transform: translate(-50%, -50%);
 }
 .animeContainer {
-  display: flex;
-  justify-content: center;
   align-items: center;
+
   gap: 8px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
+
 footer {
+  padding-top: 5px;
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
-  padding: 10px;
+
   display: flex;
   justify-content: center;
 }
@@ -67,10 +57,10 @@ footer {
   align-items: center;
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1280px) {
   .animeImage {
     width: 400px;
-    height: 600px;
+    height: 550px !important;
   }
   .text-div {
     width: 400px;
@@ -78,5 +68,15 @@ footer {
   .animeContainer {
     gap: 15px;
     padding: 20px;
+  }
+}
+@media (min-width: 2560px) {
+  .animeImage {
+    width: 500px;
+    height: 700px !important;
+  }
+  .animeContainer {
+    gap: 15px;
+    padding: 12rem;
   }
 }

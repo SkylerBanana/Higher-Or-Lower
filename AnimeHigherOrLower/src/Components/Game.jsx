@@ -50,18 +50,18 @@ function Game(props) {
         {animeData && (
           <div>
             <img
-              className="logo"
+              className="logo lg:h-[150px] md:h-13  h-10"
               src="https://cdn.discordapp.com/attachments/1092285231689646112/1184409284302360606/anime_higher_lower_logo.png?ex=658bde1a&is=6579691a&hm=76bcb4a3d14656290f1ee51336d5a187dbe974282daea6888c36cb577cabe521&"
             ></img>
             <h1 className="flex justify-center">Current Score: {score}</h1>
-            <div className="animeContainer">
+            <div className="animeContainer flex flex-col sm:flex-row md:flex-row justify-center">
               <div className="firstAnime">
-                <div className="text-div w-44">
+                <div className="text-div 2xl:w-[500px] xl:w-[400px] md:w-[260px]  w-[250px]">
                   <p className="truncate">{animeData[0].node.title}</p>
                 </div>
                 <img
                   src={animeData[0].node.main_picture.large}
-                  className="animeImage w-48 h-64 rounded-lg"
+                  className="animeImage lg:h-[350px] md:h-[260px] h-[280px] sm:h-[220px]  rounded-lg"
                   onClick={() => {
                     animeData[0].ranking.rank < animeData[1].ranking.rank
                       ? correct()
@@ -69,13 +69,14 @@ function Game(props) {
                   }}
                 />
               </div>
+
               <div className="secondAnime">
-                <div className="text-div w-44">
+                <div className="text-div 2xl:w-[500px] xl:w-[400px]  md:w-[260px] w-[250px]">
                   <p className="truncate">{animeData[1].node.title}</p>
                 </div>
                 <img
                   src={animeData[1].node.main_picture.large}
-                  className="animeImage w-48 h-64 rounded-lg"
+                  className="animeImage lg:h-[350px] md:h-[260px] h-[280px]  sm:h-[220px]   rounded-lg"
                   onClick={() => {
                     animeData[1].ranking.rank < animeData[0].ranking.rank
                       ? correct()
