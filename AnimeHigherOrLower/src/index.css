@@ -79,4 +79,7 @@ footer {
     gap: 15px;
     padding: 12rem;
   }
+  .text-div {
+    width: 500px !important;
+  }
 }
